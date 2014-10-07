@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 74307cd02f9cb014e83b5f3f10990b2a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - SimpleMat: {fileID: 2100000, guid: ce82b3590d3907946b3d2bd09a755968, type: 2}
+  - HighlightedMat: {fileID: 2100000, guid: 8c71ea08e2b18d4449d1962468b4de3c, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using AssemblyCSharp;
+
+
 
 
 public class PlayerScript : MonoBehaviour
@@ -19,7 +22,13 @@ public class PlayerScript : MonoBehaviour
 	// 2 - Store the movement
 	private Vector3 movement;
 
-	static int selectedCoin = 0;
+
+	// materials for highlight
+	public Material redCheck;
+	public Material selected;
+
+
+
 	
 	void Update()
 	{
@@ -51,13 +60,35 @@ public class PlayerScript : MonoBehaviour
 
 	void OnMouseDown()
 	{
+
+
+
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 		
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(
 			new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+
+//
+//		GameObject prevSelCoin = globals.SharedInstance.selectedCoin;
+//
+//		SelectObjectByMousePos();
+//
+//		if ((globals.SharedInstance.selectedCoin != prevSelCoin) && (prevSelCoin != null))
+//		{
+//			prevSelCoin.renderer.material=redCheck;
+//		}
+//
+//		if (globals.SharedInstance.selectedCoin != null) 
+//		{
+//			globals.SharedInstance.selectedCoin.renderer.material= selected;
+//
+//		}
+
+
+		//globals.SharedInstance.selectedCoin = gameObject;
 	}
 	
-	
+
 	void OnMouseDrag()
 	{
 		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);

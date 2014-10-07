@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: f51989be3109c6a4081b859e51b67322
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - redCheck: {fileID: 2100000, guid: ce82b3590d3907946b3d2bd09a755968, type: 2}
+  - selected: {fileID: 2100000, guid: 8c71ea08e2b18d4449d1962468b4de3c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
