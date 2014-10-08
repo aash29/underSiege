@@ -10,6 +10,7 @@ public class AppRoot : MonoBehaviour {
 	// materials for highlight
 	public Material SimpleMat;
 	public Material HighlightedMat;
+	static public int currentPlayer;
 	
 
 	// hotspots
@@ -117,6 +118,7 @@ public class AppRoot : MonoBehaviour {
 			{
 				Vector3 pt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				goOld.rigidbody.AddForce(pt - goOld.transform.position,ForceMode.Impulse);
+				AppRoot.currentPlayer=(AppRoot.currentPlayer+1)%2;
 
 			}
 
@@ -127,6 +129,8 @@ public class AppRoot : MonoBehaviour {
 	
 	#endregion
 	///////////////////////////////////////////////////////////////////////////
+
+
 
 
 

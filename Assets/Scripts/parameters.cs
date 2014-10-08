@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class selectedObject : MonoBehaviour {
+public class parameters : MonoBehaviour {
 
 	public int player;
 
