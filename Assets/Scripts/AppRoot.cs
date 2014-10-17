@@ -10,7 +10,7 @@ public class AppRoot : MonoBehaviour {
 	// materials for highlight
 	public Material SimpleMat;
 	public Material HighlightedMat;
-	static public int currentPlayer;
+	static public int currentPlayer=0;
 	
 
 	// hotspots
@@ -100,7 +100,7 @@ public class AppRoot : MonoBehaviour {
 			{
 				return;
 			}	
-			parameters p1 = goOld.GetComponent<"parameters">();
+			parameters p1 = goOld.GetComponent<parameters>();
 
 			if (p1.player != AppRoot.currentPlayer)
 			{
