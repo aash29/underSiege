@@ -100,6 +100,7 @@ public class AppRoot : MonoBehaviour {
 			{
 				return;
 			}	
+
 			parameters p1 = goOld.GetComponent<parameters>();
 
 			if (p1.player != AppRoot.currentPlayer)
