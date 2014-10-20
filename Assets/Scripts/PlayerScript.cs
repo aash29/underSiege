@@ -46,9 +46,9 @@ public class PlayerScript : MonoBehaviour
 	void FixedUpdate()
 	{
 		// 5 - Move the game object
-		rigidbody.velocity = movement;
-		rigidbody.drag = linearDamping;
-		rigidbody.angularDrag = angularDamping;
+		rigidbody2D.velocity = movement;
+		rigidbody2D.drag = linearDamping;
+		rigidbody2D.angularDrag = angularDamping;
 	}
 
 	void OnDrawGizmos() {

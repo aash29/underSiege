@@ -47,17 +47,39 @@ public class AppRoot : MonoBehaviour {
 	
 	private void SelectObjectByMousePos()
 	{
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
 		
-		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit, Constants.cMaxRayCastDistance))
+		// Store the point where the user has clicked as a Vector3.
+		Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		// Retrieve all raycast hits from the click position and store them in an array called "hits".
+		RaycastHit2D[] hitInfo = Physics2D.LinecastAll (clickPosition, clickPosition);
+
+
+		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+		//RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+		//RaycastHit2D hitInfo = Physics2D.Raycast(mouseWorldPosition, Vector2.zero);
+		
+		if(hitInfo.Length > 0)
 		{
-			// get game object
-			GameObject rayCastedGO = hit.collider.gameObject;
-			
-			// select object
+			Debug.Log(hitInfo[0].collider.gameObject.name);
+
+			GameObject rayCastedGO = hitInfo[0].collider.gameObject;
+
 			this.SelectedObject = rayCastedGO;
+
 		}
+
+//		RaycastHit hit;
+//		if (Physics2D.Raycast(ray, out hit, Constants.cMaxRayCastDistance))
+//		{
+//			// get game object
+//			GameObject rayCastedGO = hit.collider.gameObject;
+//			
+//			// select object
+//			this.SelectedObject = rayCastedGO;
+//		}
 	}
 	
 	#endregion
@@ -109,23 +131,23 @@ public class AppRoot : MonoBehaviour {
 			}
 
 			
-			// set material to non-selected object
-			if (goOld != null)
-			{
-				goOld.renderer.material = SimpleMat;
-			}
+//			// set material to non-selected object
+//			if (goOld != null)
+//			{
+//				goOld.renderer.material = SimpleMat;
+//			}
 			
-			// set material to selected object
-			if ((mSelectedObject != null) && (mSelectedObject.name != "floor"))
-			{
-				mSelectedObject.renderer.material = HighlightedMat;
-			}
+//			// set material to selected object
+//			if ((mSelectedObject != null) && (mSelectedObject.name != "floor"))
+//			{
+//				mSelectedObject.renderer.material = HighlightedMat;
+//			}
 
 
 			if ((goOld.name != "floor") && (mSelectedObject.name == "floor"))
 			{
 				Vector3 pt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				goOld.rigidbody.AddForce(pt - goOld.transform.position,ForceMode.Impulse);
+				goOld.rigidbody2D.AddForce(10*(pt - goOld.transform.position));
 				AppRoot.currentPlayer=(AppRoot.currentPlayer+1)%2;
 
 			}
