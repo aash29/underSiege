@@ -11,6 +11,8 @@ public class AppRoot : MonoBehaviour {
 	public Material SimpleMat;
 	public Material HighlightedMat;
 	static public int currentPlayer=0;
+	public float baseforce = 35;
+	public float maxforce = 700;
 	
 
 	// hotspots
@@ -35,7 +37,7 @@ public class AppRoot : MonoBehaviour {
 
 
 
-		mSelectedObject = GameObject.Find("floor");
+		mSelectedObject = GameObject.Find("frame");
 	
 	}
 	#endregion
@@ -95,6 +97,24 @@ public class AppRoot : MonoBehaviour {
 			SelectObjectByMousePos();
 		}
 
+//		public static mouseSensitivity : float = 1.0;
+//		static private Vector3 lastPosition ;
+//		
+//	
+//	
+//			if (Input.GetMouseButtonDown(0))
+//			{
+//				lastPosition = Input.mousePosition;
+//			}
+//			
+//			if (Input.GetMouseButton(0))
+//			{
+//				var delta : Vector3 = Input.mousePosition - lastPosition;
+//				transform.Translate(delta.x * mouseSensitivity, delta.y * mouseSensitivity, 0);
+//				lastPosition = Input.mousePosition;
+//			}
+
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -138,16 +158,24 @@ public class AppRoot : MonoBehaviour {
 //			}
 			
 //			// set material to selected object
-//			if ((mSelectedObject != null) && (mSelectedObject.name != "floor"))
+//			if ((mSelectedObject != null) && (mSelectedObject.name != "frame"))
 //			{
 //				mSelectedObject.renderer.material = HighlightedMat;
 //			}
 
 
-			if ((goOld.name != "floor") && (mSelectedObject.name == "floor"))
+			if ((goOld.name != "frame") && (mSelectedObject.name == "frame"))
 			{
 				Vector3 pt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				goOld.rigidbody2D.AddForce(10*(pt - goOld.transform.position));
+				Vector3 hr = (pt - goOld.transform.position);
+				hr.z=0;
+				hr=hr*baseforce;
+//				hr.Normalize();
+				if ((hr).magnitude>maxforce) {
+					hr.Normalize();
+					hr = hr*maxforce;
+				}
+				goOld.rigidbody2D.AddForce(hr);
 				AppRoot.currentPlayer=(AppRoot.currentPlayer+1)%2;
 
 			}
