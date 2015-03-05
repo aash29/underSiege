@@ -46,7 +46,22 @@ public class AppRoot : MonoBehaviour {
 
 	///////////////////////////////////////////////////////////////////////////
 	#region Implementation
+
+	void OnGUI()
+	{
+		if (!Network.isClient && !Network.isServer)
+		{
+			if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+				StartServer();
+		}
+	}
 	
+	private void StartServer()
+	{
+		Network.InitializeServer(5, 25000, !Network.HavePublicAddress());
+//		MasterServer.RegisterHost(typeName, gameName);
+	}
+
 	private void SelectObjectByMousePos()
 	{
 
